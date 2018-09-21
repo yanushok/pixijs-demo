@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dig Out!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+            /* background-color: #111; */
+            overflow: hidden
+        }
+
+        canvas {
+            position: absolute;
+            left: 0;
+            top: 0;
+            cursor: default !important;
+            /* opacity: 0 */
+        }
+    </style>
+    <script type="text/javascript">
+        window.stores = {
+            ios: "https://itunes.apple.com/",
+            gp: "https://play.google.com/"
+        }
+
+        if (!window.is_ios) {
+            var nav = navigator.userAgent || navigator.vendor || window.opera;
+            /iPad|iPhone|iPod/.test(nav) && !window.MSStream ? window.is_ios = true : window.is_ios = false;
+        }
+
+        window.clickInstall = function () {
+            var link = window.stores.gp;
+            if (is_ios) {
+                return link = window.stores.ios, void (confirm("Перейти по ссылке?") && window.open(link));
+            }
+            window.open(link, "_blank");
+        }
+    </script>
+</head>
+
+<body>
+    <script src="pixi.min.js"></script>
+    <script src="dust.js"></script>
+    <script src="level.js"></script>
+    <script src="utils.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
